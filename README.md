@@ -33,4 +33,4 @@
 			</li>
 		</ul>
 	</div>
-			See more <a href='http://christianspreafico.altervista.org/Stopmotion/Stopmotion.html' target='_blank'>Click here!</a>
+			<h2>See more <a href='http://christianspreafico.altervista.org/Stopmotion/Stopmotion.html' target='_blank'>Click here!</a></h2>
