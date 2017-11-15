@@ -25,10 +25,10 @@ options.tooltip = (typeof options.tooltip !== 'undefined') ?  options.tooltip : 
 var ItemStopmotion = "<div class='ScrollbarMobile'>"+
 			"<div class='ContainerBtnMobile'>"+
 				"<div class='BtnTopMobile' id='BtnPlayMobile' >"+
-					"<img src='Images/IconPlay.svg' class='ImageIconMobile' id='ImageBtnPlayMobile' />"+
+					"<img src='http://christianspreafico.altervista.org/Stopmotion/Images/IconPlay.svg' class='ImageIconMobile' id='ImageBtnPlayMobile' />"+
 				"</div>"+
 				"<div class='BtnTopMobile' id='BtnPauseMobile' >"+
-					"<img src='Images/IconPause.svg' class='ImageIconMobile' id='ImageBtnPauseMobile' />"+
+					"<img src='http://christianspreafico.altervista.org/Stopmotion/Images/IconPause.svg' class='ImageIconMobile' id='ImageBtnPauseMobile' />"+
 				"</div>"+
 			"</div>"+
 			"<div class='ContainerScrollbarMobile'></div>"+
