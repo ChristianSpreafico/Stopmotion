@@ -19,6 +19,7 @@ options.width = (typeof options.width !== 'undefined') ?  options.width : '100%'
 options.height = (typeof options.height !== 'undefined') ?  options.height : '100%';
 options.description = (typeof options.description !== 'undefined') ?  options.description : false;
 options.tooltip = (typeof options.tooltip !== 'undefined') ?  options.tooltip : false;
+options.animationDuration = (typeof options.animationDuration !== 'undefined') ?  options.animationDuration : 200;
 
 /* Compose container */
 
@@ -48,6 +49,7 @@ var $ContainerStopmotion = $('.ContainerStopmotion');
 $ContainerStopmotion
 .css('position', 'absolute')
 .css('top', '0px')
+.css('left', '0px')
 .css('width', options.width)
 .css('height', options.height);
 
@@ -67,35 +69,19 @@ function ComposeImages(j_start, j_stop){
 	for(j = j_start; j < j_stop; j++){
 		DataType1Current = Data[j].Type1;
 						
-		ItemImage += "<div id='Image"+j+"' style='position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 3;'>"+
-							"<div class='ContImageSingle' id='ContImageSingle_"+j+"'></div>";
+		ItemImage += "<div id='Image"+j+"' style='overflow: hidden; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 3;'>"+
+							"<img src='"+Data[j].ImageSource+"' class='Image' />";
 							
 		if(options.description == true){					
-			ItemImage += "<div class='ContDescriptionSingle' id='ContDescriptionSingle_"+j+"'></div>";
+			if(Data[j].Description != '0'){
+				ItemImage += "<div class='ContDescriptionSingle' id='ContDescriptionSingle_"+j+"'>"+Data[j].Description+"</div>";
+			}
 		}		
 		
 		ItemImage += "</div>";
 	}
 
 	$ContainerImage.html(ItemImage);
-
-	for(j = j_start; j < j_stop; j++){	
-		BgImgSelected = Data[j].ImageSource;
-			
-		$('#ContImageSingle_'+j).css('background-image','url("'+BgImgSelected+'")')
-		.css('background-size','cover')
-		.css('background-repeat','no-repeat')
-		.css('background-position','50% 50%');
-		
-		if(options.description == true){
-			if(Data[j].Description != '0'){
-				$('#ContDescriptionSingle_'+j).html(Data[j].Description);
-			}
-			else{
-				$('#ContDescriptionSingle_'+j).hide();
-			}
-		}
-	}
 	return;
 }
 
@@ -190,8 +176,8 @@ $BarInsideMobile.click(function(){
 	i_scroll = this.attributes["name"].value;
 	i_scroll = parseInt(i_scroll);
 	
-	j_start = i_scroll - 10;
-	j_stop = i_scroll + 10;
+	j_start = i_scroll - 5;
+	j_stop = i_scroll + 5;
 
 	ComposeImages(j_start, j_stop);
 	
@@ -252,13 +238,11 @@ function ScrollUpDown(){
 		i_scroll = 0;
 	}
 	
-	j_start = i_scroll  - 10;
-	j_stop = i_scroll + 10;
+	j_start = i_scroll  - 5;
+	j_stop = i_scroll + 5;
 	ComposeImages(j_start, j_stop);
 	
 	if(Versus == '+'){
-		FunctionScroll(i_scroll+1);
-		FunctionScroll(i_scroll+2);
 		FunctionScroll(i_scroll);
 	}
 	if(Versus == '-'){
@@ -266,8 +250,6 @@ function ScrollUpDown(){
 			FunctionScroll(i_scroll);
 		}
 		else{
-			FunctionScroll(i_scroll-1);
-			FunctionScroll(i_scroll-2);
 			FunctionScroll(i_scroll);
 		}
 	}
@@ -373,7 +355,7 @@ function AutoPlay_Play(){
 		Versus = '+';
 		ScrollUpDown();
 		i_scroll += 1;
-	}, 200);
+	}, options.animationDuration);
 }
 
 function AutoPlay_Pause(){
