@@ -244,12 +244,18 @@ function ScrollUpDown(){
 	
 	if(Versus == '+'){
 		FunctionScroll(i_scroll);
+		FunctionScroll(i_scroll+1);
+		FunctionScroll(i_scroll+2);
+		FunctionScroll(i_scroll);
 	}
 	if(Versus == '-'){
 		if(i_scroll == 0){
 			FunctionScroll(i_scroll);
 		}
 		else{
+			FunctionScroll(i_scroll);
+			FunctionScroll(i_scroll-1);
+			FunctionScroll(i_scroll-2);
 			FunctionScroll(i_scroll);
 		}
 	}
